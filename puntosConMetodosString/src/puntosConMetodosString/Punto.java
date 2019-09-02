@@ -57,13 +57,13 @@ public class Punto {
 		public double distancia(Punto z){
 			
 			double distancia;
-			return distancia=Math.hypot(this.getX(), this.getY());
+			return distancia=Math.hypot(this.getX()-z.getX(), this.getY()-z.getY());
 		}
 		public static double distancia(Punto z, Punto h){
 			double c1=z.getX()-h.getX();
-			double c2=z.getY()-h.getX();
-			double distancia;
-			return distancia=Math.hypot(c1,c2);
+			double c2=z.getY()-h.getY();
+			
+			return Math.hypot(c1,c2);
 		}
 		
 
