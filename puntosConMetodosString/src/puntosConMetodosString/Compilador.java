@@ -1,63 +1,80 @@
 package puntosConMetodosString;
 
-public class Compilador extends Punto {
-//DECLARACION DE ATRIBUTOS
-	private String cadena;
-	int i;
-//DECLARACION DE CONSTRUCTOR
-	public Compilador(String cadena){
-		super();
-			this.setCadena(cadena);}
-	//decalracion contructor vacio
-	public Compilador() {
-		
-	}
-//METODO GGETER
-	public String getCadena() {
-		return cadena;}
-//METODO SETTER
-	public void setCadena(String cadena) {this.cadena = cadena;}
-		
-//BOOLEAN METODO SI EMPIEZA CON C O CON F
-	public boolean Compi(String cadena){
-		
-		boolean start=false;
-		if(this.getCadena().startsWith("c")&&this.getCadena().endsWith("f")) {
-			start=true;
-			
-			}return start;
-	}
-	//metodo mover punto
-public Punto moverPunto (String cadena,Punto r) {
-	
-	
-	if (cadena.startsWith("c")&&cadena.endsWith("f")) {	
-		double x=r.getX();
-		double y=r.getY();
-		
-	
-	for(i=0;i<=this.getCadena().length();i++){
-			if(this.getCadena().contains("n")){
-			y=y+1;
-			}
-			if(this.getCadena().contains("s")){
-			y=y-1;
-			}
-			if(this.getCadena().contains("e")){
-			x=x+1;
-			}
-			if(this.getCadena().contains("o")){
-			x=x-1;	
-			}}
-	 r.setX(x);
-	 r.setY(y);
-			}
-	
-	
-	
-	return  r;
-	}
-		
-		
+public class Compilador  {
+	private String miembro;
+    private boolean start = false;
+    
+    public Compilador(String miembro) {
+        
+        this.miembro = miembro;
+        
+    }
+    
+    public String toString() {
+        return this.getCadena();
+    }
 
-}
+    //METODO GETTER
+    public boolean getStart() {
+        return start;
+    }
+    
+    //METODO SETTER
+    public void setStart(boolean start) {
+        this.start = start;
+    }
+    
+    //METODO GGETER
+    public String getCadena() {
+            return miembro;}
+    
+    //METODO SETTER
+    public void setCadena(String cadena) {
+        this.miembro = cadena;
+        }
+            
+    //BOOLEAN METODO SI EMPIEZA CON C O CON F
+    public void compilar(String cadena){    
+        if(this.getCadena().startsWith("c")&&this.getCadena().endsWith("f")) {
+                this.start=true;    
+            }
+        }
+    
+        
+    //METODO MOVER PUNTO
+    public Punto moverPunto(String cadena, Punto a) {
+            if(start == true) {
+                double x1 = a.getX();
+                double y1 = a.getY();
+                double x2 = a.getX();
+                double y2 = a.getY();
+                for(int i=0;i<cadena.length();i++){
+                    char c = cadena.charAt(i);
+                    switch(c) {
+                    case 'n':
+                        a.setY(y1+1);
+                        break;
+                    case 's':
+                        a.setY(y1-1);
+                        break;
+                    case 'e':
+                        a.setX(x1+1);
+                        break;
+                    case 'o':
+                        a.setX(x1+1);
+                        break;
+                    default:
+                        i = cadena.length();
+                        a.setX(x2);
+                        a.setY(y2);
+                        cadena = null;
+                        break;
+                    }
+                }
+                
+            }
+            else {
+                System.out.println("La cadena ingresada no es valida.");
+            }
+            return a;
+        }}
